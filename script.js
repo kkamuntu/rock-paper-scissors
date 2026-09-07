@@ -33,10 +33,30 @@ function playRound(humanChoice, computerChoice) {
     }
     else {
         console.log(`You win! ${humanChoice} beats ${computerChoice}.`)
+        humanScore++
     }
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
 
-playRound(humanSelection, computerSelection)
+function playGame(){
+    let round = 1;
+
+    while (round <= 5) {
+        console.log(`Round ${round}`);
+        playRound(getHumanChoice(), getComputerChoice())
+        console.log(`You: ${humanScore}, Computer ${computerScore}.`)
+        round++
+    }
+
+    if (humanScore > computerScore) {
+        console.log("Congratulations! You win!")
+    }
+    else if (computerScore > humanScore) {
+        console.log("You lose. Better luck next time.")
+    }
+    else {
+        console.log("It's a tie! Good game!")
+    }
+}
+
+playGame()
